@@ -1,0 +1,47 @@
+# Import construction environment
+Import('env')
+
+mp_source = Split("""
+mp_main.cpp
+simple_message/src/byte_array.cpp
+simple_message/src/joint_data.cpp
+simple_message/src/joint_traj.cpp
+simple_message/src/joint_traj_pt.cpp
+simple_message/src/message_handler.cpp
+simple_message/src/message_manager.cpp
+simple_message/src/ping_handler.cpp
+simple_message/src/ping_message.cpp
+simple_message/src/robot_status.cpp
+simple_message/src/simple_comms_fault_handler.cpp
+simple_message/src/simple_message.cpp
+simple_message/src/smpl_msg_connection.cpp
+simple_message/src/messages/joint_message.cpp
+simple_message/src/messages/joint_traj_pt_message.cpp
+simple_message/src/messages/robot_status_message.cpp
+simple_message/src/socket/simple_socket.cpp
+simple_message/src/socket/tcp_client.cpp
+simple_message/src/socket/tcp_server.cpp
+simple_message/src/socket/tcp_socket.cpp
+simple_message/src/socket/udp_client.cpp
+simple_message/src/socket/udp_server.cpp
+simple_message/src/socket/udp_socket.cpp
+""")
+
+#example_LIBPATH = ['./lib']
+#example_LIBS = ['robotcomm', 'kinematics', 'configuration', 'dev', 'collision', 'm', 'math']
+#example_LIBS = ['robotcomm', 'kinematics', 'configuration', 'dev', 'collision', 'm', 'math']
+mp_CPPDEFINES = ['NDEBUG', 'FLAT_HEADER', 'UNIVERSAL']
+example_CCFLAGS = '-O2 -Wall -m32'
+mp_CPPPATH = ['./simple_message/include',
+              './simple_message/include/socket',
+              './simple_message/include/messages']
+
+###############################################################################
+
+# Build 'example' (link using g++)
+env = Environment(CC = 'g++',  # link using g++
+                  CPPPATH = mp_CPPPATH)
+env.Program(target = 'mp_main',
+            source = mp_source,
+            CCFLAGS = example_CCFLAGS,
+            CPPDEFINES = mp_CPPDEFINES)

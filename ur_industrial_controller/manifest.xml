@@ -1,0 +1,16 @@
+<package>
+  <description brief="ur_industrial_controller">
+
+     ur_industrial_controller
+
+  </description>
+  <author>Kelsey</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ur_industrial_controller</url>
+  <depend package="roscpp"/>
+  <depend package="simple_message"/>
+
+</package>
+
+
