@@ -42,7 +42,6 @@
 #endif
 
 #ifdef FLAT_HEADER
-#include "motoPlus.h"
 #include "byte_array.h"
 #include "simple_serialize.h"
 #include "log_wrapper.h"
